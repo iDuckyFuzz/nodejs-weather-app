@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{!-- need to use / to directly access the public folder --}}
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <h1>Please search for a weather location</h1>
+    <div class="search">
+        <form action="/" method="post">
+            <input required type="text" name="location">
+            <select id="countryDropdown" name="countryCode">
+                <option value="GBR">United Kingdom of Great Britain and Northern Ireland</option>
+                {{#each list}}
+                <option value={{this.alpha}}>{{this.name}}</option>
+                {{/each}}
+            </select>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="now">
+        <h2 class="error">{{error}}</h2>
+        <h2>Location: {{place}}</h2>
+        <h2>Temperature: {{temp}}</h2>
+        <h2>Description: {{desc}}</h2>
+        <img src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="weather">
+    </div>
+    <div class="daily">
+        {{#each daily}}
+        <div class="day">
+            <p class="date">{{this.dt}}</p>
+            <p class="day-temp">Day: {{this.temp.day}}</p>
+            <p class="night-temp">Night: {{this.temp.night}}</p>
+            <p class="max">Max: {{this.temp.max}}</p>
+            <p class="min">Min: {{this.temp.min}}</p>
+            </li>
+        </div>
+        {{/each}}
+    </div>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
