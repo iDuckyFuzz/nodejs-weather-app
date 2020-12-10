@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <h1>Please search for a weather location</h1>
     <div class="search">
+        <h1>Please search for a weather location</h1>
         <form action="/" method="post">
             <input required type="text" name="location">
             <select id="countryDropdown" name="countryCode">
@@ -25,20 +25,20 @@
     </div>
     <div class="now">
         <h2 class="error">{{error}}</h2>
-        <h2>Location: {{place}}</h2>
-        <h2>Temperature: {{temp}}</h2>
-        <h2>Description: {{desc}}</h2>
-        <img src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="weather">
+        <h2 class="location">{{place}}</h2>
+        <h2 class="temperature">{{temp}}</h2>
+        <h2 class="description">{{desc}}</h2>
+        <img src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt={{alt}}>
     </div>
     <div class="daily">
         {{#each daily}}
         <div class="day">
-            <p class="date">{{this.dt}}</p>
-            <p class="day-temp">Day: {{this.temp.day}}</p>
-            <p class="night-temp">Night: {{this.temp.night}}</p>
-            <p class="max">Max: {{this.temp.max}}</p>
-            <p class="min">Min: {{this.temp.min}}</p>
-            </li>
+            <p class="data date">{{this.dt}}</p>
+            <p class="data day-temp">Day: {{this.temp.day}}&#176;C</p>
+            <p class="data night-temp">Night: {{this.temp.night}}&#176;C</p>
+            <p class="data max">Max: {{this.temp.max}}&#176;C</p>
+            <p class="data min">Min: {{this.temp.min}}&#176;C</p>
+            <img src="http://openweathermap.org/img/wn/{{this.icon}}@2x.png" alt="weather">
         </div>
         {{/each}}
     </div>

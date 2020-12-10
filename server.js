@@ -51,11 +51,11 @@ app.post("/", async (req, res) => {
     const country = req.body.countryCode;
     try {
         //add country code
-        console.log(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=5ec8ce730ef6e8147eca6810200970c1`);
         const myApi = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=5ec8ce730ef6e8147eca6810200970c1`);
         const lat = myApi.data.coord.lat;
         const lon = myApi.data.coord.lon;
         const weatherIcon = myApi.data.weather[0].icon;
+        const weatherAlt = myApi.data.weather[0].main.toLowerCase();
         const desc = myApi.data.weather[0].description;
         
         let test = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=5ec8ce730ef6e8147eca6810200970c1`);
@@ -66,8 +66,9 @@ app.post("/", async (req, res) => {
             let daynum = date.toString().split(' ')[2];
             let year = date.toString().split(' ')[3];
             test.data.daily[index].dt = `${dayString} ${month} ${daynum} ${year}`;
+            test.data.daily[index].icon = test.data.daily[index].weather[0].icon;
         });
-        res.render("index", { temp: myApi.data.main.temp, place: myApi.data.name, daily: test.data.daily, list: countryCodeList, icon:weatherIcon, desc:desc })
+        res.render("index", { temp: myApi.data.main.temp + "°", place: "Location:" + myApi.data.name, daily: test.data.daily, list: countryCodeList, icon:weatherIcon, desc:desc, alt:weatherAlt })
     }
     catch (error) {
         res.render("index", {error: "The Location you are looking for does not exist!", list: countryCodeList})

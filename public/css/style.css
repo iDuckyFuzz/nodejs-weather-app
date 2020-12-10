@@ -1,19 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body{
-    background-color: antiquewhite;
+    font-family: 'Lobster', cursive;
+}
+
+.search{
+    text-align: center;
 }
 
 .daily{
     display: flex;
+    justify-content: center;
+}
+
+.now{
+    text-align: center;
 }
 
 .day{
+    background-color: white;
+    border-radius: 10px;
     text-align: center;
-    height: 130px;
-    width: 130px;
-    margin: 0;
+    height: 180px;
+    width: 12.5%;
+    margin-left: 5px;
+    margin-right: 5px;
     border: 1px solid grey;
+}
+
+.data{
+    padding-top: 7px;
 }
 
 .day p{
     margin: 0;
+}
+
+.day img{
+    border-radius: 50%;
+    border: 1px solid grey;
+    background-color: lightgray;
 }
