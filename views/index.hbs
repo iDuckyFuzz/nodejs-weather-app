@@ -22,7 +22,7 @@
         <h1>Please search for a weather location</h1>
         <form action="/" method="post" />
         <input required type="text" name="location" placeholder="...Search City">
-        <input type="text" list="countryDropdown" placeholder="...Search Country">
+        <input required type="text" list="countryDropdown" placeholder="...Search Country">
         <datalist id="countryDropdown" name="countryCode">
             {{#each list}}
             <option value={{this.alpha}}>{{this.name}}</option>
