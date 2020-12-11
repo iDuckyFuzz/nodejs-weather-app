@@ -5,7 +5,7 @@ const path = require('path');
 const hbs = require('hbs');
 const axios = require('axios');
 let countryCodeList = [];
-require('dotenv').config()
+require('dotenv').config();
 
 //get the folder directory
 const viewsPath = path.join(__dirname, '/views');
