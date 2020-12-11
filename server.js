@@ -5,6 +5,7 @@ const path = require('path');
 const hbs = require('hbs');
 const axios = require('axios');
 let countryCodeList = [];
+require('dotenv').config()
 
 //get the folder directory
 const viewsPath = path.join(__dirname, '/views');
@@ -51,14 +52,14 @@ app.post("/", async (req, res) => {
     const country = req.body.countryCode;
     try {
         //add country code
-        const myApi = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=5ec8ce730ef6e8147eca6810200970c1`);
+        const myApi = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${process.env.API_KEY}`);
         const lat = myApi.data.coord.lat;
         const lon = myApi.data.coord.lon;
         const weatherIcon = myApi.data.weather[0].icon;
         const weatherAlt = myApi.data.weather[0].main.toLowerCase();
         const desc = myApi.data.weather[0].description;
         
-        let test = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=5ec8ce730ef6e8147eca6810200970c1`);
+        let test = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${process.env.API_KEY}`);
         test.data.daily.forEach((day, index) => {
             let date = new Date(day.dt * 1000);
             let dayString = date.toString().split(' ')[0];
