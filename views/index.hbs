@@ -4,23 +4,31 @@
 <head>
     {{!-- need to use / to directly access the public folder --}}
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dark-mode.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
 </head>
 
 <body>
+
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+        <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+    </div>
+    <script src="/js/dark-mode-switch.min.js"></script>
+    
     <div class="search">
         <h1>Please search for a weather location</h1>
-        <form action="/" method="post"/>
-            <input required type="text" name="location">
-            <select id="countryDropdown" name="countryCode">
-                <option value="GBR">United Kingdom of Great Britain and Northern Ireland</option>
-                {{#each list}}
-                <option value={{this.alpha}}>{{this.name}}</option>
-                {{/each}}
-            </select>
-            <button type="submit">Search</button>
+        <form action="/" method="post" />
+        <input required type="text" name="location">
+        <select id="countryDropdown" name="countryCode">
+            <option value="GBR">United Kingdom of Great Britain and Northern Ireland</option>
+            {{#each list}}
+            <option value={{this.alpha}}>{{this.name}}</option>
+            {{/each}}
+        </select>
+        <button type="submit">Search</button>
         </form>
     </div>
     <div class="now">
@@ -43,6 +51,7 @@
         {{/each}}
     </div>
     <script src="/js/main.js"></script>
+
 </body>
 
 </html>
