@@ -30,3 +30,7 @@
 [data-theme="dark"] .custom-control-label {
   color: rgb(255, 255, 255) !important;
 }
+
+[data-theme="dark"] input[type=text] {
+  background-color: rgb(107, 107, 107);
+}

@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+
 body{
     font-family: 'Lobster', cursive;
+}
+
+h1{
+    padding-top: 50px;
 }
 
 .search{
@@ -10,6 +15,7 @@ body{
 
 .daily{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -22,10 +28,41 @@ body{
     border-radius: 10px;
     text-align: center;
     height: 180px;
-    width: 12.5%;
+    width: 25%;
+    margin-top: 85px;
     margin-left: 5px;
     margin-right: 5px;
     border: 1px solid grey;
+}
+
+.location, .temperature, .description{
+  margin: 5px;
+}
+
+
+.search-btn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.search-btn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.search-btn:active {
+	position:relative;
+	top:1px;
 }
 
 .data{
@@ -90,3 +127,25 @@ body{
 .custom-control-input:checked + .custom-control-label::after {
   left: 24px;
 }
+
+input[type=text] {
+    width: 190px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    .day img{
+      margin-top: 15px;
+      height: 40px;
+  }
+
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  }
